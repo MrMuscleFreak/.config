@@ -1,0 +1,136 @@
+# ~/.aerospace.toml
+after-startup-command = []
+
+start-at-login = false
+
+# Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+accordion-padding = 0
+
+# Possible values: tiles|accordion
+default-root-container-layout = 'tiles'
+
+# Possible values: horizontal|vertical|auto
+# 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
+#               tall monitor (anything higher than wide) gets vertical orientation
+default-root-container-orientation = 'auto'
+
+
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+automatically-unhide-macos-hidden-apps = true
+
+
+[key-mapping]
+    preset = 'qwerty'
+
+
+[gaps]
+    inner.horizontal = 0
+    inner.vertical =   0
+    outer.left =       0
+    outer.bottom =     0
+    outer.top =        0
+    outer.right =      0
+
+[mode.main.binding]
+
+    # All possible keys:
+    # - Letters.        a, b, c, ..., z
+    # - Numbers.        0, 1, 2, ..., 9
+    # - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
+    # - F-keys.         f1, f2, ..., f20
+    # - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon,
+    #                   backtick, leftSquareBracket, rightSquareBracket, space, enter, esc,
+    #                   backspace, tab, pageUp, pageDown, home, end, forwardDelete,
+    #                   sectionSign (ISO keyboards only, european keyboards only)
+    # - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
+    #                   keypadMinus, keypadMultiply, keypadPlus
+    # - Arrows.         left, down, up, right
+
+    # All possible modifiers: cmd, alt, ctrl, shift
+
+    # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
+
+    # Layout management
+    alt-slash = 'layout tiles horizontal vertical'
+
+    # Focus management using vim direction keys ( h | ← ) ( j | ↓ ) ( k | ↑ ) ( l | → )
+    alt-h = 'focus left'
+    alt-j = 'focus down'
+    alt-k = 'focus up'
+    alt-l = 'focus right'
+
+    # Tile management using vim direction keys ( h | ← ) ( j | ↓ ) ( k | ↑ ) ( l | → )
+    alt-shift-h = 'move left'
+    alt-shift-j = 'move down'
+    alt-shift-k = 'move up'
+    alt-shift-l = 'move right'
+
+    # Resize windows
+    alt-minus = 'resize smart -50'
+    alt-equal = 'resize smart +50'
+
+    # Workspaces
+    alt-w = 'workspace web'
+    alt-c = 'workspace code'
+    alt-d = 'workspace discord'
+    alt-f = 'workspace finder'
+    alt-1 = 'workspace figma'
+    alt-s = 'workspace spotify'
+    alt-m = 'workspace miscellaneous'
+    alt-t = 'workspace terminal'
+    
+    # Move focused window to workspace
+    alt-shift-c = 'move-node-to-workspace code'
+    alt-shift-w = 'move-node-to-workspace web'
+    alt-shift-f = 'move-node-to-workspace finder'
+    alt-shift-m = 'move-node-to-workspace miscellaneous'
+    alt-shift-t = 'move-node-to-workspace terminal'
+
+    # Monitor management
+    alt-tab = 'workspace-back-and-forth'
+    alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+
+    # Service mode activation
+    alt-shift-semicolon = 'mode service'
+
+
+[[on-window-detected]]
+    if.app-id = 'com.spotify.client'
+    run = 'move-node-to-workspace spotify' 
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.finder'
+    run = 'move-node-to-workspace finder'
+
+[[on-window-detected]]
+    if.app-id = 'com.hnc.Discord'
+    run = 'move-node-to-workspace discord'
+
+[[on-window-detected]]
+    if.app-id = 'com.microsoft.VSCode'
+    run = 'move-node-to-workspace code'
+
+[[on-window-detected]]
+    if.app-id = 'com.mitchellh.ghostty'
+    run = 'move-node-to-workspace terminal'
+
+[[on-window-detected]]
+    if.app-id = 'com.figma.Desktop'
+    run = 'move-node-to-workspace figma'
+
+[[on-window-detected]]
+    if.app-id = 'com.google.Chrome'
+    run = 'move-node-to-workspace chrome'
+
+
+[mode.service.binding]
+    esc = ['reload-config', 'mode main']
+    # reset layout
+    r = ['flatten-workspace-tree', 'mode main'] 
+    # Toggle between floating and tiling layout
+    f = ['layout floating tiling', 'mode main'] 
+    # Close all windows but the current one
+    backspace = ['close-all-windows-but-current', 'mode main']
