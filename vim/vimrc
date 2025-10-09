@@ -1,0 +1,27 @@
+syntax on
+set termguicolors
+
+set number
+
+set cursorline
+
+set autoindent
+set smartindent
+
+set showmatch
+
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+set ignorecase       
+set smartcase        
+set hlsearch        
+set incsearch        
+
+set backspace=indent,eol,start
+
+colorscheme desert   
+
+set showmode
+set ruler
