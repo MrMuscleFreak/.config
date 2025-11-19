@@ -79,6 +79,7 @@ automatically-unhide-macos-hidden-apps = true
     alt-1 = 'workspace figma'
     alt-s = 'workspace spotify'
     alt-m = 'workspace miscellaneous'
+    alt-n = 'workspace notes'
     alt-t = 'workspace terminal'
     
     # Move focused window to workspace
@@ -86,6 +87,7 @@ automatically-unhide-macos-hidden-apps = true
     alt-shift-w = 'move-node-to-workspace web'
     alt-shift-f = 'move-node-to-workspace finder'
     alt-shift-m = 'move-node-to-workspace miscellaneous'
+    alt-shift-n = 'move-node-to-workspace notes'
     alt-shift-t = 'move-node-to-workspace terminal'
 
     # Monitor management
@@ -94,6 +96,9 @@ automatically-unhide-macos-hidden-apps = true
 
     # Service mode activation
     alt-shift-semicolon = 'mode service'
+
+    # Switch to floating layout
+    alt-q = 'layout floating tiling'
 
 
 [[on-window-detected]]
@@ -123,6 +128,12 @@ automatically-unhide-macos-hidden-apps = true
 [[on-window-detected]]
     if.app-id = 'com.google.Chrome'
     run = 'move-node-to-workspace web'
+
+
+[[on-window-detected]]
+    if.app-id = 'md.obsidian'
+    run = 'move-node-to-workspace notes'
+
 
 
 [mode.service.binding]
